@@ -27,8 +27,8 @@ class Pedido{
 
    subTotal(){
     let subTotal = 0;
-    for(let i = 0; i < this.listaProdutos; i++){
-        subTotal += this.listaProdutos[i].precoTotal
+    for(let i = 0; i < this.listaProdutos.length; i++){
+        subTotal += this.listaProdutos[i].calcularPrecoTotal()
     }
     return subTotal
    }
@@ -54,7 +54,7 @@ class Pedido{
 
         }
 
-        precoTotal(){
+        calcularPrecoTotal(){
             return this.produto.preco * this.quantidade
         }
         
