@@ -1,8 +1,9 @@
 class  Cliente{
-    constructor(name, phone, cpf ){
+    constructor(name, phone, cpf, endEntrega){
         this.nome = name;
         this.telefone = phone;
         this.cpf = cpf;
+        this.endEntrega = endEntrega;
     }
 }
 
@@ -14,25 +15,29 @@ class Empresa{
 }
 
 class Pedido{
-    constructor(numPedido, endEntrega, dataPedido){
+    constructor(numPedido, dataPedido, frete, cliente, loja, listaDeProdutos){
         this.numPedido = numPedido;
-        this.endEntrega = endEntrega;
         this.dataPedido = dataPedido;
-        this.valorPedido = 0;
-        this.listaProdutos = [];
+        this.valorFrete = frete;
+        this.listaProdutos = listaDeProdutos;
+        this.cliente = cliente;
+        this.loja = loja;
     }
 
-    adicionarProd(itempedido){
-        this.listaProdutos.push(itempedido)
-        
-    }
 
-    valorTotal(frete){
-        for(let i = 0; this.listaProdutos.length; i++){
-           this.valorPedido += this.listaProdutos[i].preco
-        }
-        this.valorPedido += frete
+   subTotal(){
+    let subTotal = 0;
+    for(let i = 0; i < this.listaProdutos; i++){
+        subTotal += this.listaProdutos[i].precoTotal
     }
+    return subTotal
+   }
+
+   total(){
+    return this.subTotal() + this.frete;
+   }
+
+
 }
 
     class Produto{
@@ -47,6 +52,10 @@ class Pedido{
             this.produto = produto;
             this.quantidade = quantidade;
 
+        }
+
+        precoTotal(){
+            return this.produto.preco * this.quantidade
         }
         
     }
