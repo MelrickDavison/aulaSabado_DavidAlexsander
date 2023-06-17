@@ -22,10 +22,9 @@ class Pedido{
         this.listaProdutos = [];
     }
 
-    adicionarProd(produto, quantidade){
-        for(let i = 0; i < quantidade; i++){
-        this.listaProdutos.push(produto)
-        }
+    adicionarProd(itempedido){
+        this.listaProdutos.push(itempedido)
+        
     }
 
     valorTotal(frete){
@@ -41,4 +40,13 @@ class Pedido{
             this.nome = nome;
             this.preco = preco;
         }
+    }
+
+    class ItemPed{
+        constructor(produto, quantidade){
+            this.produto = produto;
+            this.quantidade = quantidade;
+
+        }
+        
     }
